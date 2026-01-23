@@ -34,3 +34,30 @@ npaClassifications = npaClassifications.reshape(
     (npaClassifications.size, 1))  # reshape numpy array to 1d, necessary to pass to call to train
 kNearest = cv2.ml.KNearest_create()  # instantiate KNN object
 kNearest.train(npaFlattenedImages, cv2.ml.ROW_SAMPLE, npaClassifications)
+//Read video
+cap = cv2.VideoCapture('data/video/video1.mp4')
+while (cap.isOpened()):
+    # Image preprocessing
+    ret, img = cap.read()
+    tongframe = tongframe + 1
+    # img = cv2.resize(img, None, fx=0.5, fy=0.5)
+    imgGrayscaleplate, imgThreshplate = Preprocess.preprocess(img)
+    canny_image = cv2.Canny(imgThreshplate, 250, 255)  # Canny Edge
+    kernel = np.ones((3, 3), np.uint8)
+    dilated_image = cv2.dilate(canny_image, kernel,iterations=1)  # Dilation
+    # Filter out license plates
+    contours, hierarchy = cv2.findContours(dilated_image, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+    contours = sorted(contours, key=cv2.contourArea, reverse=True)[:10]  # Pick out 10 biggest contours
+    screenCnt = []
+    for c in contours:
+        peri = cv2.arcLength(c, True)  # Tính chu vi
+        approx = cv2.approxPolyDP(c, 0.06 * peri, True)  # Approximate the edges of contours
+        [x, y, w, h] = cv2.boundingRect(approx.copy())
+        ratio = w / h
+        if (len(approx) == 4) and (0.8 <= ratio <= 1.5 or 4.5 <= ratio <= 6.5):
+            screenCnt.append(approx)
+    if screenCnt is None:
+        detected = 0
+        print("No plate detected")
+    else:
+        detected = 1
