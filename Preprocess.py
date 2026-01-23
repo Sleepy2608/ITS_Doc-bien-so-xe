@@ -8,3 +8,25 @@ import math
 GAUSSIAN_SMOOTH_FILTER_SIZE = (5, 5) #kích cỡ càng to thì càng mờ
 ADAPTIVE_THRESH_BLOCK_SIZE = 19 
 ADAPTIVE_THRESH_WEIGHT = 9  
+
+###################################################################################################
+def preprocess(imgOriginal):
+
+    imgGrayscale = extractValue(imgOriginal)
+    # imgGrayscale = cv2.cvtColor(imgOriginal,cv2.COLOR_BGR2GRAY) nên dùng hệ màu HSV
+    # Trả về giá trị cường độ sáng ==> ảnh gray
+    imgMaxContrastGrayscale = maximizeContrast(imgGrayscale) #để làm nổi bật biển số hơn, dễ tách khỏi nền
+    #cv2.imwrite("imgGrayscalePlusTopHatMinusBlackHat.jpg",imgMaxContrastGrayscale)
+    height, width = imgGrayscale.shape
+
+    imgBlurred = np.zeros((height, width, 1), np.uint8)
+    imgBlurred = cv2.GaussianBlur(imgMaxContrastGrayscale, GAUSSIAN_SMOOTH_FILTER_SIZE, 0)
+    #cv2.imwrite("gauss.jpg",imgBlurred)
+    #Làm mịn ảnh bằng bộ lọc Gauss 5x5, sigma = 0
+
+    imgThresh = cv2.adaptiveThreshold(imgBlurred, 255.0, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, ADAPTIVE_THRESH_BLOCK_SIZE, ADAPTIVE_THRESH_WEIGHT)
+
+    #Tạo ảnh nhị phân
+    return imgGrayscale, imgThresh
+#Trả về ảnh xám và ảnh nhị phân
+# end function
