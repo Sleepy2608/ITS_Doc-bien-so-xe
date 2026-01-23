@@ -14,7 +14,7 @@ RESIZED_IMAGE_HEIGHT = 30
 
 ###################################################################################################
 def main():
-    imgTrainingNumbers = cv2.imread("training_chars.png")            # read in training numbers image
+    imgTrainingNumbers = cv2.imread("training_chars.png")            # read in training numbers image file
     #imgTrainingNumbers = cv2.resize(imgTrainingNumbers, dsize = None, fx = 0.5, fy = 0.5)
     
     imgGray = cv2.cvtColor(imgTrainingNumbers, cv2.COLOR_BGR2GRAY)          # get grayscale image
@@ -32,14 +32,13 @@ def main():
 
     imgThreshCopy = imgThresh.copy()        # make a copy of the thresh image, this in necessary b/c findContours modifies the image
 
-    npaContours, hierarchy = cv2.findContours(imgThreshCopy,        # input image, make sure to use a copy since the function will modify this image in the course of finding contours
-                                                 cv2.RETR_EXTERNAL,                 # retrieve the outermost contours only
-                                                 cv2.CHAIN_APPROX_SIMPLE)           # compress horizontal, vertical, and diagonal segments and leave only their end points
+    npaContours, hierarchy = cv2.findContours(imgThreshCopy,                       # input image, make sure to use a copy since the function will modify this image in the course of finding contours
+                                                cv2.RETR_EXTERNAL,                 # retrieve the outermost contours only
+                                                cv2.CHAIN_APPROX_SIMPLE)           # compress horizontal, vertical, and diagonal segments and leave only their end points
 
                                 # declare empty numpy array, we will use this to write to file later
                                 # zero rows, enough cols to hold all image data
     npaFlattenedImages =  np.empty((0, RESIZED_IMAGE_WIDTH * RESIZED_IMAGE_HEIGHT))
-   
 
     intClassifications = []         # declare empty classifications list, this will be our list of how we are classifying our chars from user input, we will write to file at the end
 
@@ -100,4 +99,5 @@ def main():
 ###################################################################################################
 if __name__ == "__main__":
     main()
+
 # end if
