@@ -30,3 +30,16 @@ def preprocess(imgOriginal):
     return imgGrayscale, imgThresh
 #Trả về ảnh xám và ảnh nhị phân
 # end function
+
+###################################################################################################
+def extractValue(imgOriginal):
+    height, width, numChannels = imgOriginal.shape
+    imgHSV = np.zeros((height, width, 3), np.uint8)
+    imgHSV = cv2.cvtColor(imgOriginal, cv2.COLOR_BGR2HSV)
+
+    imgHue, imgSaturation, imgValue = cv2.split(imgHSV)
+    
+    #màu sắc, độ bão hòa, giá trị cường độ sáng
+    #Không chọn màu RBG vì vd ảnh màu đỏ sẽ còn lẫn các màu khác nữa nên khó xđ ra "một màu" 
+    return imgValue
+# end function
