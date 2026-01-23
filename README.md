@@ -1,5 +1,6 @@
-# ITS---Doc-bien-so-xe
+# ITS - Doc bien so xe
 Final-term assignment for the Intelligent Transportation Systems (ITS) course focusing on the development of a vehicle license plate recognition application.
+
 How to run:
 1. Download the file ZIP
 2. Extract all
