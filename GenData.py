@@ -1,13 +1,10 @@
 # GenData.py
-
 import numpy as np
 import cv2
 import sys
 
-
 # module level variables ##########################################################################
 MIN_CONTOUR_AREA = 40
-
 
 RESIZED_IMAGE_WIDTH = 20
 RESIZED_IMAGE_HEIGHT = 30
@@ -52,7 +49,7 @@ def main():
         if cv2.contourArea(npaContour) > MIN_CONTOUR_AREA:          # if contour is big enough to consider
             [intX, intY, intW, intH] = cv2.boundingRect(npaContour)         # get and break out bounding rect
 
-                                                # draw rectangle around each contour as we ask user for input
+            # draw rectangle around each contour as we ask user for input
             cv2.rectangle(imgTrainingNumbers,           # draw rectangle on original training image
                           (intX, intY),                 # upper left corner
                           (intX+intW,intY+intH),        # lower right corner
@@ -79,8 +76,6 @@ def main():
                 
                 npaFlattenedImages = np.append(npaFlattenedImages, npaFlattenedImage, 0)                    # add current flattened impage numpy array to list of flattened image numpy arrays
                 
-            # end if
-        # end if
     # end for
 
     fltClassifications = np.array(intClassifications, np.float32)                   # convert classifications list of ints to numpy array of floats
@@ -99,5 +94,3 @@ def main():
 ###################################################################################################
 if __name__ == "__main__":
     main()
-
-# end if
