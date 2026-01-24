@@ -13,3 +13,5 @@ Note:
 1. Use GenData.py to generate KNN data points which is `classifications.txt` and `flattened_images.txt`
 2. `training_chars.png` is the input of GenData.py
 3. `Preprocess.py` contains functions for image processing
+
+References:
