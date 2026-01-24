@@ -126,3 +126,43 @@ while (cap.isOpened()):
                         x = x + 1
                     char_x.append(x)
                     char_x_ind[x] = ind
+            # Character recognition
+            if len(char_x) in range(7, 10):
+                cv2.drawContours(img, [screenCnt], -1, (0, 255, 0), 3)
+                char_x = sorted(char_x)
+                strFinalString = ""
+                first_line = ""
+                second_line = ""
+                for i in char_x:
+                    (x, y, w, h) = cv2.boundingRect(cont[char_x_ind[i]])
+                    cv2.rectangle(roi, (x, y), (x + w, y + h), (0, 255, 0), 2)
+                    imgROI = thre_mor[y:y + h, x:x + w]  # crop characters
+                    imgROIResized = cv2.resize(imgROI,
+                                               (RESIZED_IMAGE_WIDTH, RESIZED_IMAGE_HEIGHT))  # resize
+                    npaROIResized = imgROIResized.reshape(
+                        (1, RESIZED_IMAGE_WIDTH * RESIZED_IMAGE_HEIGHT))  # đưa hình ảnh về mảng 1 chiều
+                    # cHUYỂN ảnh thành ma trận có 1 hàng và số cột là tổng số điểm ảnh trong đó
+                    npaROIResized = np.float32(npaROIResized)  # chuyển mảng về dạng float
+                    _, npaResults, neigh_resp, dists = kNearest.findNearest(npaROIResized,k=3)  # call KNN function find_nearest; neigh_resp là hàng xóm
+                    strCurrentChar = str(chr(int(npaResults[0][0])))  # ASCII of the character
+                    cv2.putText(roi, strCurrentChar, (x, y + 50), cv2.FONT_HERSHEY_DUPLEX, 2, (0, 255, 255), 3)
+                    if (y < height / 3):   # decide 1 or 2-line license plate
+                        first_line = first_line + strCurrentChar
+                    else:
+                        second_line = second_line + strCurrentChar
+                strFinalString = first_line + second_line
+                print("\n License Plate " + str(n) + " is: " + first_line + " - " + second_line + "\n")
+                cv2.putText(img, strFinalString, (topy, topx), cv2.FONT_HERSHEY_DUPLEX, 1, (0, 255, 255), 1)
+                n = n + 1
+                biensotimthay = biensotimthay + 1
+                cv2.imshow("a", cv2.cvtColor(roi, cv2.COLOR_BGR2RGB))
+    imgcopy = cv2.resize(img, None, fx=0.5, fy=0.5)
+    cv2.imshow('License plate', imgcopy)
+    print("number of plates found", biensotimthay)
+    print("total frame", tongframe)
+    print("plate found rate:", 100 * biensotimthay / (368), "%")
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+cap.release()
+cv2.destroyAllWindows()
+
