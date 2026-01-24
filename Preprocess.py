@@ -43,3 +43,24 @@ def extractValue(imgOriginal):
     #Không chọn màu RBG vì vd ảnh màu đỏ sẽ còn lẫn các màu khác nữa nên khó xđ ra "một màu" 
     return imgValue
 # end function
+
+###################################################################################################
+def maximizeContrast(imgGrayscale):
+    #Làm cho độ tương phản lớn nhất 
+    height, width = imgGrayscale.shape
+    
+    imgTopHat = np.zeros((height, width, 1), np.uint8)
+    imgBlackHat = np.zeros((height, width, 1), np.uint8)
+    structuringElement = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3)) #tạo bộ lọc kernel
+    
+    imgTopHat = cv2.morphologyEx(imgGrayscale, cv2.MORPH_TOPHAT, structuringElement, iterations = 10) #nổi bật chi tiết sáng trong nền tối
+    #cv2.imwrite("tophat.jpg",imgTopHat)
+    imgBlackHat = cv2.morphologyEx(imgGrayscale, cv2.MORPH_BLACKHAT, structuringElement, iterations = 10) #Nổi bật chi tiết tối trong nền sáng
+    #cv2.imwrite("blackhat.jpg",imgBlackHat)
+    imgGrayscalePlusTopHat = cv2.add(imgGrayscale, imgTopHat) 
+    imgGrayscalePlusTopHatMinusBlackHat = cv2.subtract(imgGrayscalePlusTopHat, imgBlackHat)
+
+    #cv2.imshow("imgGrayscalePlusTopHatMinusBlackHat",imgGrayscalePlusTopHatMinusBlackHat)
+    #Kết quả cuối là ảnh đã tăng độ tương phản 
+    return imgGrayscalePlusTopHatMinusBlackHat
+# end function
