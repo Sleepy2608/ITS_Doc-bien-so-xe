@@ -1,5 +1,8 @@
 # ITS - Doc bien so xe
 
+Info:
+1. Language: Python
+
 How to run:
 1. Download the ZIP file.
 2. Extract all files.
