@@ -36,6 +36,17 @@ kNearest = cv2.ml.KNearest_create()  # instantiate KNN object
 kNearest.train(npaFlattenedImages, cv2.ml.ROW_SAMPLE, npaClassifications)
 //Read video
 cap = cv2.VideoCapture('data/video/video1.mp4')
+
+# ================= VIDEO RECORD SETUP =================
+fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+out = cv2.VideoWriter(
+    'output_1920x1080.mp4',
+    fourcc,
+    30.0,
+    (1920, 1080)
+)
+# =====================================================
+
 while (cap.isOpened()):
     # Image preprocessing
     ret, img = cap.read()
@@ -158,11 +169,19 @@ while (cap.isOpened()):
                 cv2.imshow("a", cv2.cvtColor(roi, cv2.COLOR_BGR2RGB))
     imgcopy = cv2.resize(img, None, fx=0.5, fy=0.5)
     cv2.imshow('License plate', imgcopy)
+    
+    # ===== WRITE FRAME TO VIDEO (1920x1080) =====
+    frame_1080p = cv2.resize(img, (1920, 1080))
+    out.write(frame_1080p)
+    # ==========================================
+
     print("number of plates found", biensotimthay)
     print("total frame", tongframe)
     print("plate found rate:", 100 * biensotimthay / (368), "%")
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
-cap.release()
-cv2.destroyAllWindows()
 
+# giải phóng VideoWriter
+cap.release()
+out.release()
+cv2.destroyAllWindows()
