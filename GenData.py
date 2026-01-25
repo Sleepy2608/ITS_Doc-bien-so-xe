@@ -3,7 +3,7 @@ import numpy as np
 import cv2
 import sys
 
-# module level variables ##########################################################################
+# module level variables
 MIN_CONTOUR_AREA = 40
 
 RESIZED_IMAGE_WIDTH = 20
@@ -44,7 +44,7 @@ def main():
                      ord('A'), ord('B'), ord('C'), ord('D'), ord('E'), ord('F'), ord('G'), ord('H'), ord('I'), ord('J'),
                      ord('K'), ord('L'), ord('M'), ord('N'), ord('O'), ord('P'), ord('Q'), ord('R'), ord('S'), ord('T'),
                      ord('U'), ord('V'), ord('W'), ord('X'), ord('Y'), ord('Z')] #Là mã ascii của mấy chữ này
-
+    
     for npaContour in npaContours:                          # for each contour
         if cv2.contourArea(npaContour) > MIN_CONTOUR_AREA:          # if contour is big enough to consider
             [intX, intY, intW, intH] = cv2.boundingRect(npaContour)         # get and break out bounding rect
@@ -75,22 +75,15 @@ def main():
                 npaFlattenedImage = imgROIResized.reshape((1, RESIZED_IMAGE_WIDTH * RESIZED_IMAGE_HEIGHT))  # flatten image to 1d numpy array so we can write to file later
                 
                 npaFlattenedImages = np.append(npaFlattenedImages, npaFlattenedImage, 0)                    # add current flattened impage numpy array to list of flattened image numpy arrays
-                
     # end for
-
     fltClassifications = np.array(intClassifications, np.float32)                   # convert classifications list of ints to numpy array of floats
-    
     npaClassifications = fltClassifications.reshape((fltClassifications.size, 1))   # flatten numpy array of floats to 1d so we can write to file later
-
     print ("\n\ntraining complete !!\n")
-
     np.savetxt("classifications.txt", npaClassifications)           # write flattened images to file
     np.savetxt("flattened_images.txt", npaFlattenedImages)          #
-
     cv2.destroyAllWindows()             # remove windows from memory
-
     return
 
-###################################################################################################
 if __name__ == "__main__":
     main()
+
