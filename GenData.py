@@ -39,11 +39,11 @@ def main():
 
     intClassifications = []         # declare empty classifications list, this will be our list of how we are classifying our chars from user input, we will write to file at the end
 
-                                    # possible chars we are interested in are digits 0 through 9, put these in list intValidChars
+                                    # set up các chữ số và chữ cái có trong biển số xe (không tính các dấu - và .)
     intValidChars = [ord('0'), ord('1'), ord('2'), ord('3'), ord('4'), ord('5'), ord('6'), ord('7'), ord('8'), ord('9'),
                      ord('A'), ord('B'), ord('C'), ord('D'), ord('E'), ord('F'), ord('G'), ord('H'), ord('I'), ord('J'),
                      ord('K'), ord('L'), ord('M'), ord('N'), ord('O'), ord('P'), ord('Q'), ord('R'), ord('S'), ord('T'),
-                     ord('U'), ord('V'), ord('W'), ord('X'), ord('Y'), ord('Z')] #Là mã ascii của mấy chữ này
+                     ord('U'), ord('V'), ord('W'), ord('X'), ord('Y'), ord('Z')] #Mã ascii cho các chữ cái
     
     for npaContour in npaContours:                          # for each contour
         if cv2.contourArea(npaContour) > MIN_CONTOUR_AREA:          # if contour is big enough to consider
@@ -62,7 +62,7 @@ def main():
             cv2.imshow("imgROI", imgROI)                    # show cropped out char for reference
             cv2.imshow("imgROIResized", imgROIResized)      # show resized image for reference
             
-            cv2.imshow("training_numbers.png", imgTrainingNumbers)      # show training numbers image, this will now have red rectangles drawn on it
+            cv2.imshow("training_numbers", imgTrainingNumbers)      # show training numbers image, this will now have red rectangles drawn on it
 
             intChar = cv2.waitKey(0)                     # get key press
 
@@ -76,6 +76,7 @@ def main():
                 
                 npaFlattenedImages = np.append(npaFlattenedImages, npaFlattenedImage, 0)                    # add current flattened impage numpy array to list of flattened image numpy arrays
     # end for
+    
     fltClassifications = np.array(intClassifications, np.float32)                   # convert classifications list of ints to numpy array of floats
     npaClassifications = fltClassifications.reshape((fltClassifications.size, 1))   # flatten numpy array of floats to 1d so we can write to file later
     print ("\n\ntraining complete !!\n")
@@ -86,4 +87,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
