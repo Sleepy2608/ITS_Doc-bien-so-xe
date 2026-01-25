@@ -28,3 +28,11 @@ kNearest = cv2.ml.KNearest_create()  # instantiate KNN object
 kNearest.train(npaFlattenedImages, cv2.ml.ROW_SAMPLE, npaClassifications)
 #########################
 
+################ Image Preprocessing #################
+imgGrayscaleplate, imgThreshplate = Preprocess.preprocess(img)
+canny_image = cv2.Canny(imgThreshplate, 250, 255)  # Canny Edge
+kernel = np.ones((3, 3), np.uint8)
+dilated_image = cv2.dilate(canny_image, kernel, iterations=1)  # Dilation
+# cv2.imshow("dilated_image",dilated_image)
+
+###########################################
