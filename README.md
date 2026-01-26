@@ -1,7 +1,8 @@
 # ITS - Doc bien so xe
 
 Info:
-1. Language: Python
+1. Language: Python.
+2. Using OpenCV.
 
 How to run:
 1. Download the ZIP file.
@@ -21,7 +22,3 @@ Note:
 3. `Preprocess.py` contains functions for image processing
 
 References:
-1. Vietnamese License Plate Recognition in 3 steps using OpenCV and KNN: https://youtu.be/7erlCp6d5w8?si=TsBLXfu-T4a1Owm9
-2. mrzaizai2k: https://github.com/mrzaizai2k
-3. [OpenCV] Full Hệ thống Nhận diện biển số xe, bãi đỗ xe thông minh (License plate Indentification): https://youtu.be/cItwiM6XBqs?si=yOonV5bU4Ftzf8xb
-4. [OpenCV] P2 Nhận diện biển số xe (License plate identification) Python Opencv bằng FrameWork Django: https://youtu.be/Mf8-1IMCnnY?si=RI1T2rC_GElc3MT-
