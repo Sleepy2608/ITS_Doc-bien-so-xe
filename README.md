@@ -1,5 +1,5 @@
 # ITS - Doc bien so xe
-Full topic name: Xây dựng hệ thống nhận diện biển số xe.
+Full topic name: Xây dựng hệ thống nhận diện biển số xe (Building a license plate recognition system).
 
 Info:
 1. Language: Python.
