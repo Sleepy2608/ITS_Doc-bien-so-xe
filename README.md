@@ -1,5 +1,6 @@
 # ITS - Doc bien so xe
 Full topic name: Xây dựng hệ thống nhận diện biển số xe.
+
 Info:
 1. Language: Python.
 2. Using K-nearest neighbors (KNN) to associate detected plates across consecutive frames by measuring feature similarity, helping maintain consistent identities and stabilize recognition results
