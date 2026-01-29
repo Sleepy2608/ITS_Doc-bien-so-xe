@@ -17,7 +17,7 @@ Cách chạy chương trình:
 2. Giải nén toàn bộ file.
 3. Mở project và kiểm tra đường dẫn file cũng như các thư viện cần thiết.
 4. Chạy chương trình.
-5. Khi chạy với ảnh: Gõ: python `Image_test2.py` hoặc chạy trực tiếp file Image_test2.py. -> Tất cả ảnh test sẽ được hiển thị cùng với ký tự nhận diện trên biển số.
+5. Khi chạy với ảnh: Gõ: python `Image_test2.py` hoặc chạy trực tiếp file Image_test2.py -> Tất cả ảnh test sẽ được hiển thị cùng với ký tự nhận diện trên biển số.
 6. Chạy với video: Gõ: python `Video_test2.py` hoặc chạy trực tiếp file Video_test2.py (Độ phân giải video đầu vào: 1920×1080) -> Video sẽ được hiển thị và các kết quả nhận diện hợp lệ sẽ được hiển thị và đếm dựa trên xác suất.
 
 Cấu trúc dự án:
@@ -28,7 +28,7 @@ Cấu trúc dự án:
 5. Nếu không thể chạy video test, hãy đọc ở `README-VIDEO.txt` trong tệp data.
 
 References:
-1. OpenCV Tutorial: Unlock the Power of Visual Data Processing: https://www.datacamp.com/tutorial/opencv-tutorial?utm_cid=19589720824&utm_aid=157156376071&utm_campaign=230119_1-ps-other~dsa-tofu~all_2-b2c_3-apac_4-prc_5-na_6-na_7-le_8-pdsh-go_9-nb-e_10-na_11-na&utm_loc=9198559-&utm_mtd=-c&utm_kw=&utm_source=google&utm_medium=paid_search&utm_content=ps-other~apac-en~dsa~tofu~tutorial~machine-learning&gad_source=1&gad_campaignid=19589720824&gbraid=0AAAAADQ9WsEmOSTlQCEplRrIL04Bd9iY0&gclid=Cj0KCQiAvtzLBhCPARIsALwhxdrewsX8hPb7oae6R3FEtFT8gLkI69W673qBH7A8aVkzF5DyAvXVIqAaAqhEEALw_wcB
+1. Hướng dẫn OpenCV: Unlock the Power of Visual Data Processing: https://www.datacamp.com/tutorial/opencv-tutorial?utm_cid=19589720824&utm_aid=157156376071&utm_campaign=230119_1-ps-other~dsa-tofu~all_2-b2c_3-apac_4-prc_5-na_6-na_7-le_8-pdsh-go_9-nb-e_10-na_11-na&utm_loc=9198559-&utm_mtd=-c&utm_kw=&utm_source=google&utm_medium=paid_search&utm_content=ps-other~apac-en~dsa~tofu~tutorial~machine-learning&gad_source=1&gad_campaignid=19589720824&gbraid=0AAAAADQ9WsEmOSTlQCEplRrIL04Bd9iY0&gclid=Cj0KCQiAvtzLBhCPARIsALwhxdrewsX8hPb7oae6R3FEtFT8gLkI69W673qBH7A8aVkzF5DyAvXVIqAaAqhEEALw_wcB
 2. OpenCV tutorial for beginners | FULL COURSE in 3 hours with Python: https://www.youtube.com/watch?v=eDIj5LuIL4A
 3. Machine Learning - K-nearest neighbors (KNN): https://www.w3schools.com/python/python_ml_knn.asp
 4. Các youtuber được dùng để tham khảo: Hà Nam 88, Computer vision engineer, Mrzaizai2k - AI, Nicholas Renotte,...
