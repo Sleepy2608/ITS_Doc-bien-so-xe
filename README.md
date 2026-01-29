@@ -1,4 +1,6 @@
-# ITS - Doc bien so xe
+# Building a License Plate Recognition System
+# Xây dựng hệ thống nhận diện biển số xe
+
 **TIẾNG VIỆT**
 Topic: Xây dựng hệ thống nhận diện biển số xe.
 
