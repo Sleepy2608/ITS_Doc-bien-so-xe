@@ -33,7 +33,7 @@ References:
 3. Machine Learning - K-nearest neighbors (KNN): https://www.w3schools.com/python/python_ml_knn.asp
 4. Các youtuber được dùng để tham khảo: Hà Nam 88, Computer vision engineer, Mrzaizai2k - AI, Nicholas Renotte,...
 
-=================================================================================================================================================================================================================================================
+#
 **ENGLISH**
 
 Topic: Building a license plate recognition system.
