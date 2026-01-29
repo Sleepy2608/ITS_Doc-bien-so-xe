@@ -6,6 +6,7 @@ Info:
 2. Using K-nearest neighbors (KNN) to associate detected plates across consecutive frames by measuring feature similarity, helping maintain consistent identities and stabilize recognition results
 3. OpenCV serves as the foundational computer vision library for preprocessing, traditional license plate detection, basic object tracking, and visualization in license plate tracking systems.
 4. Using in real life license plate to test the program.
+
 To sum up, the system is developed using Python ≥ 3.8, with OpenCV employed for image processing and NumPy for data representation. The K-Nearest Neighbors (KNN) algorithm is applied for license plate character recognition, while scikit-learn supports basic machine learning operations. The dependency list is intentionally minimized to ensure reproducibility and efficient deployment.
 
 How to run:
