@@ -1,7 +1,7 @@
 Required setup to run:
-python>=3.8
-numpy==1.22.4
-opencv-python==4.11.0.86
-imutils==0.5.4
-matplotlib==3.5.1
-scikit-learn==1.0.2
+python>=3.8 
+numpy==1.22.4 (Hỗ trợ xử lý dữ liệu ảnh)
+opencv-python==4.11.0.86 (Phát hiện & nhận dạng biển số)
+imutils==0.5.4 (Hỗ trợ xử lý ảnh)
+matplotlib==3.5.1 (Hiển thị & đánh giá)
+scikit-learn==1.0.2 (Áp dụng cho thuật toán KNN)
