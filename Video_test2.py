@@ -33,7 +33,9 @@ npaClassifications = npaClassifications.reshape(
     (npaClassifications.size, 1))  # reshape numpy array to 1d, necessary to pass to call to train
 kNearest = cv2.ml.KNearest_create()  # instantiate KNN object
 kNearest.train(npaFlattenedImages, cv2.ml.ROW_SAMPLE, npaClassifications)
+
 # Read video
+# Can add and change video file below
 cap = cv2.VideoCapture('data/video/video1.mp4')
 
 # ================= VIDEO RECORD SETUP =================
